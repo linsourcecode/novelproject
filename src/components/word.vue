@@ -4,7 +4,7 @@
         <el-header>
             <div>
                 
-                <span>黑马后台管理系统</span>
+                <span>{{series}}</span>
                 
             </div>
          
@@ -14,15 +14,15 @@
            
         </el-header>
        
-        <div class="aside">
-     <el-container height="100%">
+
+     <el-container height="100%"   >
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)" >
-        <el-menu :default-openeds="['1', '3']"  router >
+        <el-menu :default-openeds="['1', '3']"  router  :default-active="$route.path">
           <el-submenu index="1"  active-text-color="#409Eff">
             <template slot="title " ><i class="el-icon-message"></i>目录</template>
             
              
-              <el-menu-item v-for="(o, i) in value" ><span>{{value[i]["article_name"]}}</span></el-menu-item>
+              <el-menu-item v-for="(o, i) in value"  :index="`showData?article=${value[i].article_name}&series=${series}`"  ><span>{{value[i]["article_name"]}}</span></el-menu-item>
              
            </el-submenu>
       
@@ -30,12 +30,13 @@
   
         </el-menu>
       </el-aside>
-    </el-container>
-    </div>
+
+
       <el-main>
               <router-view></router-view>
       </el-main>
      </el-container>
+   
     </el-container>
     </div>
     
@@ -68,12 +69,9 @@
       })
       this.value= res
       console.log(res)
-
-   
-     
-
-
-     
+ },
+        handleItemClick(){
+             console.log("点击事件")
             }
          }
     }

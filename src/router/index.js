@@ -31,10 +31,7 @@ const router =  new VueRouter({
                     path:'/myRecord',
                     component:myRecord
                  },
-                 {
-                  path:'/showData',
-                  component:showData
-               },
+              
                {
                   path:'/upLoad',
                   component:dataV 
@@ -60,13 +57,22 @@ const router =  new VueRouter({
       {
          path:'/word',
          component:word,
-         name:word
+         name:word,
+         children:[
+            {
+               path:'/showData',
+               component:showData
+            }
+           
+         ]
       },
         {
          path:'/myTitle',
          component:TitleShow
 
-        }
+        },
+ 
+      
       
       
     
